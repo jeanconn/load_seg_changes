@@ -32,6 +32,17 @@ def time_machine_get_file(date, file='load_segment.rdb'):
 
 
 def find_changes(start=None, stop=None):
+    """
+    Generate an html diff for the load_segment iFOT files
+    from `start` and `stop`.  Defaults to returning
+    diff from file 7 days ago to most recent file.
+
+    :start: input Chandra.Time compatible start date
+    :stop: input Chandra.Time compatible stop date
+    :returns: dictionary that includes difflib.HtmlDiff
+              table (string) of diffs in 'htmldiff' key
+    """
+
     if start == None:
         start = DateTime() - 7
     if stop == None:
